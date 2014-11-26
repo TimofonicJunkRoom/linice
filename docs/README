@@ -1,0 +1,33 @@
+                        Linice Kernel Level Debugger
+
+Quick Start:
+
+You need to have kernel sources installed, or at least compile kernel headers for the kernel version for which you are linking Linice.
+
+Compile all components, depending on the kernel version:
+# cd build
+# ./make_bin-2.4
+	or
+# ./make_bin-2.6
+
+This command will also create a correct sym link named 'bin'
+
+Compile the kernel specific code:
+# cd ../bin
+# make clean ; make
+
+Install Linice:
+# ./linsym -i
+
+After this command, Linice should pop up on the VGA screen. Press F5 to let it go.
+You can break in at any time using a hotkey Ctrl+Q.
+
+Uninstall Linice:
+# ./linsym -x
+
+Please read the documentation file Linice.pdf for detailed description of commands and command line options.
+Google the web for the information about all the commands that are compatible with SoftIce.
+
+Hope you find it useful,
+- Goran Devic
+author@linice.com
