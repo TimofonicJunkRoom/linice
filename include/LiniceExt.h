@@ -88,7 +88,7 @@ typedef int (*PLINICEEXT_GETCH)(int fPolled);
 typedef int (*PLINICEEXT_MEMVERIFY)(int sel, int offset, int size);
 
 
-typedef struct tagLiniceExt
+struct tagLiniceExt
 {
 //------------------------------------------------------------------
 // These need to be filled in by the registrar of the extension
@@ -97,7 +97,7 @@ typedef struct tagLiniceExt
     int     size;                       // size of this structure
     char   *pDotName;                   // Name of the extension dot command
     char   *pDotDescription;            // Optional description string
-    struct TLINICEEXT *pNext;           // Ignore this one, for internal use
+    struct tagLiniceExt *pNext;           // Ignore this one, for internal use
 
     // The extension interface module sets these as desired handlers (some may be NULL):
     PEXT_DOT             Command;       // Dot-command evaluator function
@@ -115,7 +115,9 @@ typedef struct tagLiniceExt
     PLINICEEXT_GETCH     Getch;         // Get input character
     PLINICEEXT_MEMVERIFY MemVerify;     // Verify memory range for access
 
-} TLINICEEXT;
+};
+typedef struct tagLiniceExt TLINICEEXT;
+
 
 // These functions are exported by Linice and should link with the module
 // when it loads into the running kernel by insmod

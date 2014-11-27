@@ -244,7 +244,7 @@ int LiniceRegisterExtension(TLINICEEXT *pExt)
                     if( p==pExt )
                         return( EXTREGISTER_DUPLICATE );
 
-                    (struct TLINICEEXT *) p = p->pNext;
+                    p = p->pNext;
                 }
 
                 // Next we need to check that this particular command has not been
@@ -255,12 +255,12 @@ int LiniceRegisterExtension(TLINICEEXT *pExt)
                     if( p->pDotName==pExt->pDotName )
                         return( EXTREGISTER_DUPLICATE );
 
-                    (struct TLINICEEXT *) p = p->pNext;
+                    p = p->pNext;
                 }
 
                 // We are ok to register this handler
 
-                pExt->pNext = (struct TLINICEEXT *) pRootExt;
+                pExt->pNext = (TLINICEEXT *) pRootExt;
                 pRootExt = pExt;
 
                 // Fill up the callback pointers
@@ -315,7 +315,7 @@ void LiniceUnregisterExtension(TLINICEEXT *pExt)
             if( pExt==pRootExt )
             {
                 // The extension is the first node on the list
-                (struct TLINICEEXT *) pRootExt = pExt->pNext;
+                pRootExt = pExt->pNext;
             }
             else
             {
@@ -333,7 +333,7 @@ void LiniceUnregisterExtension(TLINICEEXT *pExt)
         }
 
         pPrev = p;
-        (struct TLINICEEXT *) p = p->pNext;
+        p = p->pNext;
     }
 }
 
@@ -355,7 +355,7 @@ BOOL cmdExtList (char *args, int subClass)
     {
         dprinth(nLine++, "  %-8s %s", p->pDotName, p->pDotDescription? p->pDotDescription : "");
 
-        (struct TLINICEEXT *) p = p->pNext;
+        p = p->pNext;
     }
 
     return( TRUE );
@@ -401,7 +401,7 @@ int DispatchExtCommand(char *pCommand)
                 return( TRUE );
             }
 
-            (struct TLINICEEXT *) p = p->pNext;
+            p = p->pNext;
         }
         // TODO: error here
     }
@@ -429,7 +429,7 @@ static void DispatchExtNotify(int signal)
     {
         // Prefetch pNext pointer so we are safe if something happens with the
         // extension structure within their handlers
-        (struct TLINICEEXT *) pNext = p->pNext;
+        pNext = p->pNext;
 
         if( p->Notify )
             p->Notify(signal);
@@ -514,7 +514,7 @@ BOOL QueryExtToken(DWORD *pResult, char **pToken, int len)
             }
         }
 
-        (struct TLINICEEXT *) p = p->pNext;
+        p = p->pNext;
     }
 
     return( FALSE );
