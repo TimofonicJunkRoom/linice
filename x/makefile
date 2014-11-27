@@ -14,7 +14,7 @@
 
 H    = ../include
 LIBS = -L/usr/X11R6/lib
-LIB  = -lX11 -lXxf86dga -lXext
+LIB  = -lX11 -lXxf86dga #-lXext
 
 LINKFLAGS = $(LIBS) $(LIB)
 
