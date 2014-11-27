@@ -51,7 +51,7 @@ typedef long	clock_t;
 
 #ifndef _CADDR_T
 #define _CADDR_T
-typedef int	caddr_t;
+//typedef int	caddr_t;
 #endif
 
 /* bsd */
