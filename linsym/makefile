@@ -13,7 +13,8 @@
 #-----------------------------------------------------------------------------
 
 INC = /usr/include
-H   = ../include
+H1  = ../include
+H2  = ../tools/include
 
 #-----------------------------------------------------------------------------
 # Compiler defines:
@@ -25,14 +26,14 @@ H   = ../include
 # Compiler defines: Engineering NON-DEBUG build (default)
 #-----------------------------------------------------------------------------
 
-CFLAGS = -Wall -O3 -I$(INC) -I$(H)
+CFLAGS = -Wall -O3 -I$(INC) -I$(H1) -I$(H2)
 
 #-----------------------------------------------------------------------------
 # Compiler defines: Engineering DEBUG build (Development)
 #-----------------------------------------------------------------------------
 ifeq ($(MAKECMDGOALS),debug)
 
-CFLAGS = -gstabs+ -Wall -DDBG -O -I$(INC) -I$(H)
+CFLAGS = -gstabs+ -Wall -DDBG -O -I$(INC) -I$(H1) -I$(H2)
 
 endif
 #-----------------------------------------------------------------------------

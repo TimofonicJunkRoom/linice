@@ -1,7 +1,7 @@
 #ifndef _LINUX_ELF_H
 #define _LINUX_ELF_H
 
-
+#if 0
 typedef int	fd_set;
 //typedef int	dev_t;
 //typedef int	ino_t;
@@ -14,6 +14,7 @@ typedef int	gid_t;
 typedef int	daddr_t;
 typedef int	key_t;
 typedef int	suseconds_t;
+#endif
 
 #if defined(__GNUC__) && !defined(__STRICT_ANSI__)
 typedef __kernel_loff_t		loff_t;
@@ -30,7 +31,7 @@ typedef __kernel_loff_t		loff_t;
 
 #ifndef _SSIZE_T
 #define _SSIZE_T
-typedef int	ssize_t;
+//typedef int	ssize_t;
 #endif
 
 #ifndef _PTRDIFF_T
@@ -93,6 +94,7 @@ typedef		__s64		int64_t;
 
 #endif /* __KERNEL_STRICT_NAMES */
 
+#if 0
 /*
  * Below are truly Linux-specific types that should never collide with
  * any application/library that wants linux/types.h.
@@ -107,13 +109,13 @@ struct ustat {
 	char			f_fname[6];
 	char			f_fpack[6];
 };
-
+#endif
 
 #include "asm/elf.h"
 
 typedef signed int __s32;
-typedef unsigned long __u64;
-typedef signed long __s64;
+//typedef unsigned long __u64;
+//typedef signed long __s64;
 typedef unsigned int __u32;
 typedef signed short __s16;
 
